@@ -1,0 +1,19 @@
+{
+  "name": "user-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pricing-calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.2.0"
+  }
+}
