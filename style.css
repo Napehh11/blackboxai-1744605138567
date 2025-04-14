@@ -1,0 +1,36 @@
+/* Custom styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#inventoryList {
+    display: none;
+}
+
+#inventoryList:has(div) {
+    display: block;
+}
+
+/* Animation for new items */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#listContainer > div {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Highlight differences */
+.count-mismatch {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
