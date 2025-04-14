@@ -1,0 +1,3 @@
+Proyek telah berhasil dikemas ke dalam file zip bernama `project_backup.zip`. Anda dapat mengunduh file zip ini untuk memprosesnya di Android Studio dan membuat file APK untuk digunakan di ponsel Anda. 
+Silakan gunakan tautan berikut untuk mengunduh file tersebut: 
+- project_backup.zip
