@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Pricing Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-calculator mr-2 text-blue-500"></i>
+                Pricing Calculator
+            </h1>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Product Cost</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">Rp</span>
+                        <input type="number" id="productCost" class="pl-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="0">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Markup Type</label>
+                    <select id="markupType" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border">
+                        <option value="percentage">Percentage</option>
+                        <option value="fixed">Fixed Amount</option>
+                    </select>
+                </div>
+
+                <div id="percentageField">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Markup Percentage</label>
+                    <div class="relative">
+                        <input type="number" id="markupPercentage" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="0">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">%</span>
+                    </div>
+                </div>
+
+                <div id="fixedField" class="hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Fixed Markup</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">Rp</span>
+                        <input type="number" id="fixedMarkup" class="pl-10 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-200">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">PPN (VAT)</h3>
+                    <div class="flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ppnOption" value="include" class="form-radio text-blue-600" checked>
+                            <span class="ml-2">Include 11% PPN</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ppnOption" value="exclude" class="form-radio text-blue-600">
+                            <span class="ml-2">Exclude PPN</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-200">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Marketplace Fees</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Marketplace</label>
+                            <select id="marketplaceSelect" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border">
+                                <option value="none">None</option>
+                                <option value="shopee">Shopee</option>
+                                <option value="tokopedia">Tokopedia</option>
+                                <option value="lazada">Lazada</option>
+                                <option value="tiktok">TikTok Shop</option>
+                            </select>
+                        </div>
+
+                        <div id="marketplaceFields" class="hidden space-y-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm text-gray-700 mb-1">Komisi (%)</label>
+                                    <input type="number" id="marketplaceCommission" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="0-100" min="0" max="100" step="0.1">
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-700 mb-1">Campaign (%)</label>
+                                    <input type="number" id="marketplaceCampaign" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="0-100" min="0" max="100" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-gray-700 mb-1">Shipping</label>
+                                <select id="marketplaceShippingType" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border">
+                                    <option value="none">No Free Shipping</option>
+                                    <option value="fixed">Fixed Cost</option>
+                                    <option value="percent">Percentage</option>
+                                </select>
+                                <input type="number" id="marketplaceShippingValue" class="mt-2 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 border" placeholder="Value" min="0" step="0.1" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="calculateBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                    Calculate Selling Price
+                </button>
+            </div>
+
+            <div id="result" class="mt-6 p-4 bg-blue-50 rounded-md hidden">
+                <h2 class="text-lg font-semibold text-gray-800 mb-2">Pricing Result</h2>
+                <div class="space-y-2">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Product Cost:</span>
+                        <span id="displayCost" class="font-medium">Rp0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Markup Amount:</span>
+                        <span id="displayMarkup" class="font-medium">Rp0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Base Selling Price:</span>
+                        <span id="displayBasePrice" class="font-medium">Rp0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Total Marketplace Fees:</span>
+                        <span id="displayTotalFees" class="font-medium">Rp0</span>
+                    </div>
+                    <div id="feeDetails" class="space-y-1 pl-4 border-l-2 border-gray-200"></div>
+                    <div class="flex justify-between border-t-2 border-gray-300 pt-2">
+                        <span class="text-gray-800 font-semibold">Final Selling Price (Base Price + Fees):</span>
+                        <span id="displayFinalPrice" class="text-blue-600 font-bold">Rp0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pricing-calculator.js"></script>
+</body>
+</html>
