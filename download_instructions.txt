@@ -1,0 +1,10 @@
+Untuk mengunduh file zip proyek yang telah dikemas, silakan ikuti langkah-langkah berikut:
+
+1. Buka terminal di lingkungan pengembangan Anda.
+2. Jalankan perintah berikut untuk mengunduh file:
+   ```
+   curl -O http://localhost:8000/project_backup.zip
+   ```
+3. Setelah selesai, Anda akan memiliki file `project_backup.zip` di direktori kerja Anda.
+
+Pastikan server lokal Anda berjalan pada port 8000 untuk mengakses file tersebut.
