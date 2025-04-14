@@ -1,0 +1,5 @@
+Untuk mengunduh file `project_backup.zip` dari Google Drive, silakan gunakan tautan berikut:
+
+[Download project_backup.zip](https://drive.google.com/uc?export=download&id=YOUR_FILE_ID)
+
+Gantilah `YOUR_FILE_ID` dengan ID file yang sesuai setelah Anda mengupload file ke Google Drive.
